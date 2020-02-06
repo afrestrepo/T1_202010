@@ -26,7 +26,7 @@ public class ListaOrdenada<T> implements IListaOrdenada<T> {
 			Node<T> actual = darUltimo();
 			actual.cambiarSiguiente(agregar);
 			ultimo=agregar;
-			longitud++;
+			longitud++;		
 		}
 	}
 

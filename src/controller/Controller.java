@@ -26,11 +26,9 @@ public class Controller {
 	public void run() 
 	{
 		Scanner lector = new Scanner(System.in);
-		boolean fin = false;
-		String dato = "";
-		String respuesta = "";
+		boolean fin = false;		
 		int id = 0;
-
+		String resultado = " ";
 		while( !fin ){
 			view.printMenu();
 
@@ -38,17 +36,16 @@ public class Controller {
 			switch(option){
 				case 1:
 					view.printMessage("--------- \nRealizar la carga de los comparendos de la ciudad de Bogotá para el periodo 2018. ");				    
-				    modelo = new Modelo(); 
+				    resultado = modelo.agregar(); 
 				    view.printMessage("Elementos agregados");
-				    view.printMessage("Primercomparendo:" + modelo.darTamano() + "\nDar capacidad inicial del arreglo"+modelo.darTamano() + "\n---------");						
+				    view.printMessage(resultado);						
 					break;
 
 				case 2:
 					view.printMessage("--------- \nConsultar la información básica de un comparendo dado su OBJECTID.: ");
 					id = lector.nextInt();
-					modelo.buscar(id);
-					view.printMessage("Dato agregado");
-					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
+				    resultado = modelo.buscar(id);					
+					view.printMessage("Resultados de la busqueda:\n" +resultado);						
 					break;
 
 				case 3:

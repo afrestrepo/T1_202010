@@ -8,6 +8,7 @@ public interface IListaOrdenada<T> {
 	
 	int darLongitud();
 	
-	
+	Node<T> darUltimo();
+	Node<T> darPrimero();
 
 }

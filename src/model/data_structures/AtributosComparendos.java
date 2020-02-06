@@ -46,5 +46,8 @@ public class AtributosComparendos {
 		return LOCALIDAD;
 
 	}
+	public String darDatos(){
+		return  OBJECTID+FECHA_HORA+CLASE_VEHI+TIPO_SERVI+INFRACCION+DES_INFRAC+LOCALIDAD;
+	}
 
 }
