@@ -1,66 +1,74 @@
 package model.data_structures;
 
-public class ListaOrdenada<T> implements IListaOrdenada<T> {
+public class ListaOrdenada<AtributosComparendos> implements IListaOrdenada<AtributosComparendos> {
 	private int longitud;
-	
-	private Node<T> primero;
-	
-	private Node<T> ultimo;
-	
+
+	private Node<AtributosComparendos> primero;
+
+	private Node<AtributosComparendos> ultimo;
+
 	public ListaOrdenada(){
 		longitud=0;
 		primero=null;
 		ultimo=null;		
 	}
 
-	
-	public void agregar(T dato) {
-		
+
+	public void agregar(AtributosComparendos dato) {
+
 		if(primero==null){
-			primero = new Node<T>(dato);
+			primero = new Node<AtributosComparendos>(dato);
 			ultimo=primero;
 			longitud++;
 		}
 		else{
-			Node<T> agregar = new Node<T>(dato);
-			Node<T> actual = darUltimo();
+			Node<AtributosComparendos> agregar = new Node<AtributosComparendos>(dato);
+			Node<AtributosComparendos> actual = darUltimo();
 			actual.cambiarSiguiente(agregar);
 			ultimo=agregar;
 			longitud++;		
 		}
 	}
 
-	
-	public T buscar(int id) {
-		T encontrar = null;
-		if(primero==null){
-			return encontrar;
-		}
-		else{
-			Node<T> actual = primero;
-			for(int i =0;i!=id;i++){
-				actual = actual.darSiguiente();
+
+	public AtributosComparendos buscar(int id) {
+		AtributosComparendos encontrar = null;
+
+		try{
+			if(primero==null){
+				return encontrar;
 			}
-			encontrar = actual.darElemento();
-			return encontrar;
+			else{
+				Node<AtributosComparendos> actual = primero;
+				for(int i =0;i<id;i++){
+					actual = actual.darSiguiente();
+				}
+				encontrar = actual.darElemento();
+				return encontrar;
+			}
 		}
+		catch(Exception e){
+			System.out.println("No existe la informacion de ese comparendo");
+			return encontrar=null;
+		}
+
 	}
 
-	
+
 	public int darLongitud() {
-		
+
 		return longitud;
 	}
-	
-	public Node<T> darUltimo(){
+
+	public Node<AtributosComparendos> darUltimo(){
 		return ultimo;
 	}
-	
-	public Node<T> darPrimero(){
+
+	public Node<AtributosComparendos> darPrimero(){
 		return primero;
 	}
 
-	
-	
+
+
 
 }

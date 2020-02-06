@@ -1,19 +1,19 @@
 package model.data_structures;
 
-public class Node<T> {
-	private T elemento;
-	private Node<T> siguiente;
-	public Node(T elemento){
-		elemento=elemento;
+public class Node<AtributosComparendos> {
+	private AtributosComparendos elemento;
+	private Node<AtributosComparendos> siguiente;
+	public Node(AtributosComparendos pelemento){
+		elemento=pelemento;
 		siguiente = null;
 	}
-	public void cambiarSiguiente(Node<T> siguiente){
-		 siguiente =siguiente;
+	public void cambiarSiguiente(Node<AtributosComparendos> psiguiente){
+		 siguiente =psiguiente;
 	}
-	public Node<T> darSiguiente(){
+	public Node<AtributosComparendos> darSiguiente(){
 		return siguiente;
 	}
-	public T darElemento(){
+	public AtributosComparendos darElemento(){
 		return elemento;
 	}
 }

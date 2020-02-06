@@ -1,14 +1,14 @@
 package model.data_structures;
 
-public interface IListaOrdenada<T> {
+public interface IListaOrdenada<AtributosComparendos> {
 	
-	void agregar(T dato);
+	void agregar(AtributosComparendos dato);
 	
-	T buscar(int id);
+	AtributosComparendos buscar(int id);
 	
 	int darLongitud();
 	
-	Node<T> darUltimo();
-	Node<T> darPrimero();
+	Node<AtributosComparendos> darUltimo();
+	Node<AtributosComparendos> darPrimero();
 
 }

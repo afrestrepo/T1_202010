@@ -35,17 +35,15 @@ public class Controller {
 			int option = lector.nextInt();
 			switch(option){
 				case 1:
-					view.printMessage("--------- \nRealizar la carga de los comparendos de la ciudad de Bogotá para el periodo 2018. ");				    
-				    resultado = modelo.agregar(); 
+					view.printMessage("--------- \nRealizar la carga de los comparendos de la ciudad de Bogotá para el periodo 2018. ");  
 				    view.printMessage("Elementos agregados");
-				    view.printMessage(resultado);						
+				    view.printMessage( modelo.agregar());						
 					break;
 
 				case 2:
-					view.printMessage("--------- \nConsultar la información básica de un comparendo dado su OBJECTID.: ");
-					id = lector.nextInt();
-				    resultado = modelo.buscar(id);					
-					view.printMessage("Resultados de la busqueda:\n" +resultado);						
+					view.printMessage("--------- \nConsultar la información básica de un comparendo dado su OBJECTID: ");
+					id = lector.nextInt();				    					
+					view.printMessage("Resultados de la busqueda:\n" +modelo.buscar(id));						
 					break;
 
 				case 3:

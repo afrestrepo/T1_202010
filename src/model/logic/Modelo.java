@@ -22,7 +22,7 @@ public class Modelo {
 	/**
 	 * Atributos del modelo del mundo
 	 */
-	private IListaOrdenada datos;
+	private IListaOrdenada<AtributosComparendos> datos;
 
 	private String rutaArchivoJSON;
 	private boolean inicioArrayComparendos;  
@@ -58,7 +58,7 @@ public class Modelo {
 	 */
 	public Modelo()
 	{
-		datos = new ListaOrdenada();
+		datos = new ListaOrdenada<AtributosComparendos>();
 		rutaArchivoJSON = comparendos_small_GEOJSON_FILE;
 		inicioArrayComparendos = false;
 		leyendoPropiedades = false;
@@ -102,31 +102,6 @@ public class Modelo {
 	 */
 	public String agregar()
 	{	
-		processingJSONFile( ); 
-		AtributosComparendos primero = (AtributosComparendos) datos.darPrimero().darElemento();
-		AtributosComparendos segundo = (AtributosComparendos) datos.darPrimero().darElemento();
-		return "Datos primer comparendo:\n"+primero.darDatos() + "\nDatos segundo comparendo:\n"+segundo.darDatos();
-	}
-
-	/**
-	 * Requerimiento buscar dato
-	 * @param dato Dato a buscar
-	 * @return dato encontrado
-	 */
-	public String buscar(int id)
-	{
-		AtributosComparendos buscar = (AtributosComparendos) datos.buscar(id);
-		if(buscar!=null){
-			return "OBJECTID:" + buscar.darId() + "\n FECHA_HORA" + buscar.darFechaHora()+"\n INFRACCION " + buscar.darInfraccion()+"\n CLASE_VEHI" + buscar.darClase()+"\n TIPO_SERVI " + buscar.darTipo()+"\n LOCALIDAD " + buscar.darLocalidad();
-
-		}
-		else{
-			return "No existe el archivo";
-		}
-	}
-
-	public void processingJSONFile( ) 
-	{
 		try
 		{
 			BufferedReader rd = null;
@@ -158,7 +133,28 @@ public class Modelo {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
+		AtributosComparendos primero = (AtributosComparendos) datos.darPrimero().darElemento();
+		AtributosComparendos segundo = (AtributosComparendos) datos.darUltimo().darElemento();
+		return "Datos primer comparendo:\n" + primero.darDatos() + "\nDatos segundo comparendo:\n"+ segundo.darDatos() ;
 	}
+
+	/**
+	 * Requerimiento buscar dato
+	 * @param dato Dato a buscar
+	 * @return dato encontrado
+	 */
+	public String buscar(int id)
+	{
+		AtributosComparendos buscar = (AtributosComparendos) datos.buscar(id);
+		if(buscar!=null){
+			return "OBJECTID:\n" + buscar.darId() + "\n FECHA_HORA:\n" + buscar.darFechaHora()+"\n INFRACCION \n" + buscar.darInfraccion()+"\n CLASE_VEHI\n" + buscar.darClase()+"\n TIPO_SERVI\n " + buscar.darTipo()+"\n LOCALIDAD \n" + buscar.darLocalidad();
+
+		}
+		else{
+			return "No existe el archivo";
+		}
+	}
+	
 	private void handleObject(JsonReader reader) throws IOException
 	{		
 		reader.beginObject();
