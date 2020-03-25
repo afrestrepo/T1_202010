@@ -18,7 +18,10 @@ public class AtributosComparendos {
 		DES_INFRAC=descInfra;
 		LOCALIDAD=localidad;
 		int mecagoenlputa=0;
+
 		int tuputamadre=0;
+
+
 
 	}
 	public int darId(){
