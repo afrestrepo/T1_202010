@@ -17,6 +17,7 @@ public class AtributosComparendos {
 		INFRACCION=infraccion;
 		DES_INFRAC=descInfra;
 		LOCALIDAD=localidad;
+		int mecagoenlputa=0;
 
 	}
 	public int darId(){
